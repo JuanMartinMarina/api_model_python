@@ -1,0 +1,60 @@
+Paso 1: Identificar la API y obtener una clave API (si es necesario)
+        Encontrar la API que deseas utilizar y leer su documentación. (Esto sirve para entender qué información vas a poder consultar, cómo hacer las solicitudes y qué tipo de autenticación requiere.
+        Registrarse y obtener una clave API, si es que la API lo requiere. 
+        Guardar esta clave ya que la necesitarás en tus solicitudes.
+                                                                       
+Paso 2: Entender la documentación de la API
+        Lee la documentación de la API para entender los endpoints disponibles, los parámetros que puedes enviar y el tipo de respuestas que puedes esperar.
+        Identifica el endpoint que deseas consultar.
+
+Paso 3: Hacer una solicitud a la API.
+        El archivo "ejemplo.py" explica cómo hacer una solicitud básica usando Python y la biblioteca requests, que es una de las formas más comunes de interactuar 
+        con APIs en este lenguaje. Igualmente dejo el código a continuación para fines prácticos y para continuar con la explicación:
+
+Instalar la biblioteca requests utilizando pip:
+
+pip install requests
+
+Escribir el código para hacer la solicitud. 
+Por ejemplo, para hacer una solicitud GET a una API genérica, podrías usar el siguiente código:
+
+--------------------------------------CÓDIGO----------------------------------------------
+
+import requests
+
+# URL del endpoint de la API
+url = 'https://api.ejemplo.com/data'
+
+# Si la API requiere una clave API para autenticación
+headers = {
+    'Authorization': 'Bearer tu_clave_api_aquí'
+}
+
+# Parámetros opcionales
+params = {
+    'param1': 'valor1',
+    'param2': 'valor2'
+}
+
+response = requests.get(url, headers=headers, params=params)
+
+# Verifica que la solicitud fue exitosa
+if response.status_code == 200:
+    data = response.json()
+    print(data)
+else:
+    print('Error en la solicitud:', response.status_code)
+
+--------------------------------------CÓDIGO----------------------------------------------
+
+En este código, reemplaza 'https://api.ejemplo.com/data' con la URL real del endpoint que deseas consultar, 
+tu_clave_api_aquí con tu clave API (si es necesario), y los parámetros según lo que desees consultar.
+
+Paso 4: Procesar la respuesta
+        La respuesta de la API normalmente será en formato JSON, que puedes convertir en un diccionario de Python usando response.json() como se muestra en el código.
+        Examinar este diccionario para encontrar la información que necesitas.
+
+Paso 5: Manejo de errores
+        Siempre verifica el código de estado de la respuesta (response.status_code) para asegurarte de que la solicitud fue exitosa.
+        Trata los diferentes códigos de error adecuadamente en tu código.
+        Con estos pasos, deberías ser capaz de realizar consultas básicas a una API. Recuerda que cada API es única, por lo que es crucial leer y entender su documentación específica.
